@@ -1,33 +1,35 @@
-import java.util.Base64;
+package EncodeDecode;
+
+import java.io.UnsupportedEncodingException;
 
 public class Converts {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		 // Getting encoder  
-        Base64.Encoder encoder = Base64.getEncoder();  
-        // Creating byte array  
-        bytebyteArr[] = {1,2};  
-        // encoding byte array  
-        bytebyteArr2[] = encoder.encode(byteArr);  
-        System.out.println("Encoded byte array: "+byteArr2);  
-        bytebyteArr3[] = newbyte[5];                // Make sure it has enough size to store copied bytes  
-        intx = encoder.encode(byteArr,byteArr3);    // Returns number of bytes written  
-        System.out.println("Encoded byte array written to another array: "+byteArr3);  
-        System.out.println("Number of bytes written: "+x);  
-      
-        // Encoding string  
-        String str = encoder.encodeToString("JavaTpoint".getBytes());  
-        System.out.println("Encoded string: "+str);  
-        // Getting decoder  
-        Base64.Decoder decoder = Base64.getDecoder();  
-        // Decoding string  
-        String dStr = new String(decoder.decode(str));  
-        System.out.println("Decoded string: "+dStr);  
-    }  
-		
+		//String to byte
+		String textA = "Dinh cua tam Giac khong can!";
+		System.out.println("Text before encode: "+textA);
+		String resultA = MaHoa.encodeString(textA);
+		System.out.println("Encode text: "+resultA);
+		String originalA = MaHoa.decodeString(resultA);
+		System.out.println("Decode text: "+originalA);
 
+		//Byte to String
+		byte[] resultB = MaHoa.encodeByte(textA.getBytes());
+		String st1 = null;
+		try {
+			st1 = new String(resultB,"UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		}
+		System.out.println("Encode Byte To String: "+st1);
+		byte[] originalB = MaHoa.decodeByte(resultB);
+		String st2 = null;
+		try {
+			 st2 = new String(originalB, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Decode Byte to String: "+st2 );	
 	}
 
 }
